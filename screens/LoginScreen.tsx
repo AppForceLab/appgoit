@@ -1,22 +1,44 @@
 import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import colors from "../styles/global";
 
+import Input from "../components/input";
+import InputBtn from "../components/inputBtn";
+import ActionBtn from "../components/actionBtn";
+import { useState } from "react";
+
 const { width: SCR_WIDTH } = Dimensions.get("screen");
 
 const LoginScreen = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  console.log(email, password);
+
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={require("../assets/images/bg.png")} />
       <View style={styles.formContainer}>
         <Text style={styles.title}>Увійти</Text>
         <View style={styles.inputContainer}>
-
+          <Input
+            placeholder="Адреса електронної пошти"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            secureTextEntry={false}
+          />
+          <Input
+            placeholder="Пароль"
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            secureTextEntry={true}
+            rightButton={InputBtn("Показати")}
+            extraStyles={{ paddingRight: 100 }}
+          />
         </View>
 
         <View style={styles.buttonContainer}>
-
+          <ActionBtn text={"Увійти"} />
         </View>
-
       </View>
     </View>
   );
@@ -64,12 +86,13 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   inputContainer: {
+    width: "100%",
+    gap: 16,
     marginBottom: 42,
-    backgroundColor: colors.grey,
   },
   buttonContainer: {
-    marginBottom : 16,
+    marginBottom: 16,
     backgroundColor: colors.grey,
     borderRadius: 100,
-  }
+  },
 });
