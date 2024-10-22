@@ -1,13 +1,14 @@
-import { StyleSheet, Text, View, TouchableOpacity} from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import colors from "../styles/global";
 
 type ActionBtnProps = {
   text: string;
+  onPress?: () => void;
 };
 
-const ActionBtn = ({ text }: ActionBtnProps) => {
+const ActionBtn = ({ text, onPress }: ActionBtnProps) => {
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={styles.button} onPress={onPress}>
       <Text style={styles.buttonText}>{text}</Text>
     </TouchableOpacity>
   );

@@ -1,22 +1,36 @@
-import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import { Dimensions, Image, Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
 import colors from "../styles/global";
 
 import Input from "../components/input";
 import InputBtn from "../components/inputBtn";
 import ActionBtn from "../components/actionBtn";
 import { useState } from "react";
+import TextLink from "../components/textLink";
 
 const { width: SCR_WIDTH } = Dimensions.get("screen");
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(true);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleLogin = () => {
+    console.log("Login with - ",email, password);
+    setPassword("");
+    setEmail("");
+  };
 
   console.log(email, password);
 
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={require("../assets/images/bg.png")} />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <KeyboardAvoidingView style={styles.keyboardAvoid} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <View style={styles.formContainer}>
         <Text style={styles.title}>Увійти</Text>
         <View style={styles.inputContainer}>
@@ -30,16 +44,19 @@ const LoginScreen = () => {
             placeholder="Пароль"
             value={password}
             onChangeText={(text) => setPassword(text)}
-            secureTextEntry={true}
-            rightButton={InputBtn("Показати")}
+            secureTextEntry={showPassword}
+            rightButton={InputBtn("Показати", handleShowPassword)}
             extraStyles={{ paddingRight: 100 }}
           />
         </View>
 
         <View style={styles.buttonContainer}>
-          <ActionBtn text={"Увійти"} />
+          <ActionBtn text={"Увійти"} onPress={handleLogin}/>
+          <TextLink text={"Немає акаунту? "} linkText={"Зареєструватися"} onPress={() => console.log("Зареєструватися")} />
         </View>
       </View>
+      </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
     </View>
   );
 };
@@ -50,8 +67,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    alignContent: 'flex-end',
+    justifyContent: 'flex-end',
+    height: '100%',
   },
   text: {
     fontFamily: "Roboto-Bold",
@@ -71,9 +89,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    position: "absolute",
-    bottom: 0,
-    left: 0,
+    // position: "absolute",
+    // bottom: 0,
+    // left: 0,
     paddingHorizontal: 16,
     paddingVertical: 32,
   },
@@ -91,8 +109,15 @@ const styles = StyleSheet.create({
     marginBottom: 42,
   },
   buttonContainer: {
-    marginBottom: 16,
-    backgroundColor: colors.grey,
+    gap: 16,
+    // backgroundColor: colors.grey,
     borderRadius: 100,
   },
+  keyboardAvoid: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+    justifyContent: "flex-end",
+    alignItems: "center",
+  }
 });
