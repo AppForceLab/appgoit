@@ -3,6 +3,7 @@ import { useFonts } from "expo-font";
 import { useEffect } from "react";
 
 import LoginScreen from "./screens/LoginScreen";
+import RegistrationScreen from "./screens/RegistrationScreen";
 
 
 
@@ -26,5 +27,5 @@ export default function App() {
     }
   }, [fontsLoaded]);
 
-  return <LoginScreen />;
+  return < RegistrationScreen/>;
 }

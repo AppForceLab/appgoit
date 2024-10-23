@@ -1,4 +1,14 @@
-import { Dimensions, Image, Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
+import {
+  Dimensions,
+  Image,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import colors from "../styles/global";
 
 import Input from "../components/input";
@@ -19,7 +29,7 @@ const LoginScreen = () => {
   };
 
   const handleLogin = () => {
-    console.log("Login with - ",email, password);
+    console.log("Login with - ", email, password);
     setPassword("");
     setEmail("");
   };
@@ -30,32 +40,39 @@ const LoginScreen = () => {
     <View style={styles.container}>
       <Image style={styles.image} source={require("../assets/images/bg.png")} />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <KeyboardAvoidingView style={styles.keyboardAvoid} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-      <View style={styles.formContainer}>
-        <Text style={styles.title}>Увійти</Text>
-        <View style={styles.inputContainer}>
-          <Input
-            placeholder="Адреса електронної пошти"
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-            secureTextEntry={false}
-          />
-          <Input
-            placeholder="Пароль"
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-            secureTextEntry={showPassword}
-            rightButton={InputBtn("Показати", handleShowPassword)}
-            extraStyles={{ paddingRight: 100 }}
-          />
-        </View>
+        <KeyboardAvoidingView
+          style={styles.keyboardAvoid}
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+        >
+          <View style={styles.formContainer}>
+            <Text style={styles.title}>Увійти</Text>
+            <View style={styles.inputContainer}>
+              <Input
+                placeholder="Адреса електронної пошти"
+                value={email}
+                onChangeText={(text) => setEmail(text)}
+                secureTextEntry={false}
+              />
+              <Input
+                placeholder="Пароль"
+                value={password}
+                onChangeText={(text) => setPassword(text)}
+                secureTextEntry={showPassword}
+                rightButton={InputBtn("Показати", handleShowPassword)}
+                extraStyles={{ paddingRight: 100 }}
+              />
+            </View>
 
-        <View style={styles.buttonContainer}>
-          <ActionBtn text={"Увійти"} onPress={handleLogin}/>
-          <TextLink text={"Немає акаунту? "} linkText={"Зареєструватися"} onPress={() => console.log("Зареєструватися")} />
-        </View>
-      </View>
-      </KeyboardAvoidingView>
+            <View style={styles.buttonContainer}>
+              <ActionBtn text={"Увійти"} onPress={handleLogin} />
+              <TextLink
+                text={"Немає акаунту? "}
+                linkText={"Зареєструватися"}
+                onPress={() => console.log("Зареєструватися")}
+              />
+            </View>
+          </View>
+        </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
     </View>
   );
@@ -67,9 +84,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignContent: 'flex-end',
-    justifyContent: 'flex-end',
-    height: '100%',
+    alignContent: "flex-end",
+    justifyContent: "flex-end",
+    height: "100%",
   },
   text: {
     fontFamily: "Roboto-Bold",
@@ -89,9 +106,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    // position: "absolute",
-    // bottom: 0,
-    // left: 0,
     paddingHorizontal: 16,
     paddingVertical: 32,
   },
@@ -110,7 +124,6 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     gap: 16,
-    // backgroundColor: colors.grey,
     borderRadius: 100,
   },
   keyboardAvoid: {
@@ -119,5 +132,5 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "flex-end",
     alignItems: "center",
-  }
+  },
 });
