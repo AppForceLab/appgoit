@@ -27,5 +27,5 @@ export default function App() {
     }
   }, [fontsLoaded]);
 
-  return < RegistrationScreen/>;
+  return < LoginScreen/>;
 }
