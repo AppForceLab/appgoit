@@ -19,7 +19,7 @@ import TextLink from "../components/textLink";
 
 const { width: SCR_WIDTH } = Dimensions.get("screen");
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(true);
@@ -32,6 +32,7 @@ const LoginScreen = () => {
     console.log("Login with - ", email, password);
     setPassword("");
     setEmail("");
+    navigation.navigate("LoggedIn");
   };
 
   console.log(email, password);
@@ -68,7 +69,7 @@ const LoginScreen = () => {
               <TextLink
                 text={"Немає акаунту? "}
                 linkText={"Зареєструватися"}
-                onPress={() => console.log("Зареєструватися")}
+                onPress={() => navigation.navigate("Registration")}
               />
             </View>
           </View>

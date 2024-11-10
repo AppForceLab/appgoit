@@ -9,7 +9,7 @@ import {
 
 type FotoProps = {
   image: ImageSourcePropType;
-  icon: ImageSourcePropType;
+  icon: ImageSourcePropType ;
   OnClick: () => void;
 };
 

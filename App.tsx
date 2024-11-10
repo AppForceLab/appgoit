@@ -2,16 +2,14 @@ import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
 
-import LoginScreen from "./screens/LoginScreen";
-import RegistrationScreen from "./screens/RegistrationScreen";
-
-
-
+import { NavigationContainer } from "@react-navigation/native";
+import BottomTabNavigator from "./navigation/BottomTabNavigator";
+import StackNavigator from "./navigation/StackNavigator";
+import 'react-native-gesture-handler';
 
 export default function App() {
   useEffect(() => {
     SplashScreen.preventAutoHideAsync();
-    
   }, []);
   const [fontsLoaded] = useFonts({
     "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
@@ -20,12 +18,16 @@ export default function App() {
     "Roboto-Light": require("./assets/fonts/Roboto-Light.ttf"),
   });
 
-
   useEffect(() => {
     if (fontsLoaded) {
       SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
 
-  return < LoginScreen/>;
+  return (
+    <NavigationContainer>
+      {/* <BottomTabNavigator /> */}
+      <StackNavigator />
+    </NavigationContainer>
+  );
 }

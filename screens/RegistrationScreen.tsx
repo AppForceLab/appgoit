@@ -20,7 +20,7 @@ import Avatar from "../components/avatar";
 
 const { width: SCR_WIDTH } = Dimensions.get("screen");
 
-const RegistrationScreen = () => {
+const RegistrationScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -86,7 +86,7 @@ const RegistrationScreen = () => {
               <TextLink
                 text={"Вже є акаунт? "}
                 linkText={"Увійти"}
-                onPress={() => console.log("Увійти")}
+                onPress={() => navigation.navigate("Login")}
               />
             </View>
           </View>
