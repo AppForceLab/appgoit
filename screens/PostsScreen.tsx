@@ -1,13 +1,10 @@
-import { Image, StyleSheet, Text, View } from "react-native";
-import  colors  from "../styles/global";
+import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
+import colors from "../styles/global";
 import { FlatList } from "react-native-gesture-handler";
 import CommentsActiveIcon from "../icons/CommentsActiveIcon";
 import LocationIcon from "../icons/LocationIcon";
 
-
-const PostsScreen = () => {
-  
-
+const PostsScreen = ({navigation} ) => {
   const posts = [
     {
       id: "1",
@@ -25,22 +22,26 @@ const PostsScreen = () => {
     },
   ];
 
-
   const renderItem = (item) => (
     <View style={styles.postContainer}>
-            <Image style={styles.postImage} source={item.image} />
-            <Text style={styles.postTitle}>{item.title}</Text>
-            <View style={styles.detailsContainer}>
-                <View style={styles.detailItem}>
-                    <CommentsActiveIcon />
-                    <Text style={styles.commentText}>{item.commentsAmount}</Text>
-                </View>
-                <View style={styles.detailItem}>
-                    <LocationIcon />
-                    <Text style={styles.locationText}>{item.location}</Text>
-                </View>
-            </View>
+      <Image style={styles.postImage} source={item.image} />
+      <Text style={styles.postTitle}>{item.title}</Text>
+      <View style={styles.detailsContainer}>
+        <View style={styles.detailItem}>
+          <CommentsActiveIcon />
+          <Text style={styles.commentText}>{item.commentsAmount}</Text>
         </View>
+        <TouchableWithoutFeedback onPress={() => {
+          console.log("Location pressed");
+          navigation.navigate("Map")
+          }}>
+          <View style={styles.detailItem}>
+            <LocationIcon />
+            <Text style={styles.locationText}>{item.location}</Text>
+          </View>
+        </TouchableWithoutFeedback>
+      </View>
+    </View>
   );
 
   return (
@@ -95,40 +96,40 @@ const styles = StyleSheet.create({
   },
   postContainer: {
     marginBottom: 32,
-},
-postImage: {
+  },
+  postImage: {
     width: "100%",
     borderRadius: 8,
-    height: 240, 
-},
-postTitle: {
+    height: 240,
+  },
+  postTitle: {
     fontWeight: "500",
     fontSize: 16,
     color: colors.black,
     marginVertical: 8,
-},
-detailsContainer: {
+  },
+  detailsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-},
-detailItem: {
+  },
+  detailItem: {
     flexDirection: "row",
     alignItems: "center",
-},
-commentText: {
-    marginLeft: 6, 
+  },
+  commentText: {
+    marginLeft: 6,
     fontSize: 16,
     fontWeight: 400,
     color: colors.grey,
-},
-locationText: {
-    marginLeft: 4, 
+  },
+  locationText: {
+    marginLeft: 4,
     fontSize: 16,
     fontWeight: 400,
     color: colors.black,
     textDecorationLine: "underline",
-},
+  },
 });
 
 export default PostsScreen;

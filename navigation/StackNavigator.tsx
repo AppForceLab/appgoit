@@ -2,6 +2,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "../screens/LoginScreen";
 import RegistrationScreen from "../screens/RegistrationScreen";
 import BottomTabNavigator from "./BottomTabNavigator";
+import MapScreen from "../screens/MapScreen";
 
 const Stack = createStackNavigator();
 
@@ -33,7 +34,17 @@ const StackNavigator = () => {
           headerShown: false,
         }}
       />
+
+<Stack.Screen
+        name="Map"
+        component={MapScreen} 
+        options={{
+          headerShown: false,
+        }}
+      />
+
     </Stack.Navigator>
+    
   );
 };
 
