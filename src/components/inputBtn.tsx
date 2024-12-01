@@ -1,5 +1,5 @@
 import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
-import colors from "../styles/global";
+import colors from "../../styles/global";
 
 const InputBtn = (text: string, onPress: () => void) => {
   return (

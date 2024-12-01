@@ -1,6 +1,6 @@
 
 import { TouchableOpacity } from "react-native-gesture-handler"
-import ArrowLeftIcon from "../icons/ArrowLeftIcon"
+import ArrowLeftIcon from "../../icons/ArrowLeftIcon"
 import { useNavigation, useRoute } from "@react-navigation/native";
 
 const BackButton = () => {

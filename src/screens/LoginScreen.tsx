@@ -9,62 +9,49 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import colors from "../styles/global";
+import colors from "../../styles/global";
 
 import Input from "../components/input";
 import InputBtn from "../components/inputBtn";
 import ActionBtn from "../components/actionBtn";
 import { useState } from "react";
 import TextLink from "../components/textLink";
-import Avatar from "../components/avatar";
+import { loginDB, registerDB } from "../utils/auth";
+import { useDispatch } from "react-redux";
 
 const { width: SCR_WIDTH } = Dimensions.get("screen");
 
-const RegistrationScreen = ({ navigation }) => {
+const LoginScreen = ({ navigation }) => {
+  const disatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
   const [showPassword, setShowPassword] = useState(true);
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleAddAvatar = () => {
-    console.log("Add avatar");
-  };
-
   const handleLogin = () => {
-    console.log("Register with - ", name, email, password);
+    console.log("Login with - ", email, password);
+    loginDB({ email, password }, disatch);
     setPassword("");
     setEmail("");
-    setName("");
+    // navigation.navigate("LoggedIn");
   };
 
-  console.log(name, email, password);
+  console.log(email, password);
 
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={require("../assets/images/bg.png")} />
+      <Image style={styles.image} source={require("../../assets/images/bg.png")} />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <KeyboardAvoidingView
           style={styles.keyboardAvoid}
           behavior={Platform.OS === "ios" ? "padding" : "height"}
         >
           <View style={styles.formContainer}>
-            <Avatar
-              image={require("../assets/images/avatar.png")}
-              icon={require("../assets/images/add.png")}
-              OnClick={handleAddAvatar}
-            />
-            <Text style={styles.title}>Реєстрація</Text>
+            <Text style={styles.title}>Увійти</Text>
             <View style={styles.inputContainer}>
-              <Input
-                placeholder="Логін"
-                value={name}
-                onChangeText={(text) => setName(text)}
-                secureTextEntry={false}
-              />
               <Input
                 placeholder="Адреса електронної пошти"
                 value={email}
@@ -82,11 +69,11 @@ const RegistrationScreen = ({ navigation }) => {
             </View>
 
             <View style={styles.buttonContainer}>
-              <ActionBtn text={"Зареєстуватися"} onPress={handleLogin} />
+              <ActionBtn text={"Увійти"} onPress={handleLogin} />
               <TextLink
-                text={"Вже є акаунт? "}
-                linkText={"Увійти"}
-                onPress={() => navigation.navigate("Login")}
+                text={"Немає акаунту? "}
+                linkText={"Зареєструватися"}
+                onPress={() => navigation.navigate("Registration")}
               />
             </View>
           </View>
@@ -96,7 +83,7 @@ const RegistrationScreen = ({ navigation }) => {
   );
 };
 
-export default RegistrationScreen;
+export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -120,12 +107,12 @@ const styles = StyleSheet.create({
 
   formContainer: {
     width: SCR_WIDTH,
-    height: "70%",
+    height: "60%",
     backgroundColor: colors.white,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     paddingHorizontal: 16,
-    paddingTop: 92,
+    paddingVertical: 32,
   },
 
   title: {
@@ -151,12 +138,5 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "center",
   },
-  avatar: {
-    backgroundColor: colors.grey,
-    height: 120,
-    width: 120,
-    position: "absolute",
-    top: 0,
-    right: "50%",
-  },
 });
+

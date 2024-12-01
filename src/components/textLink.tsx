@@ -4,7 +4,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from "react-native";
-import colors from "../styles/global";
+import colors from "../../styles/global";
 
 type TextLinkProps = {
   text: string;

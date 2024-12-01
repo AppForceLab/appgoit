@@ -1,5 +1,5 @@
 import { TouchableOpacity } from "react-native-gesture-handler";
-import AddIcon from "../icons/AddIcon";
+import AddIcon from "../../icons/AddIcon";
 
 type Props = {
   onPress: () => void;

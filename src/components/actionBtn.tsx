@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import colors from "../styles/global";
+import colors from "../../styles/global";
 
 type ActionBtnProps = {
   text: string;

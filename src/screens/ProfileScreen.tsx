@@ -1,12 +1,12 @@
 import { Dimensions, FlatList, StyleSheet, Text, View } from "react-native";
 import { Image } from "react-native";
-import colors from "../styles/global";
+import colors from "../../styles/global";
 
-import CommentsActiveIcon from "../icons/CommentsActiveIcon";
-import LocationIcon from "../icons/LocationIcon";
-import LikeIcon from "../icons/LikeIcon";
+import CommentsActiveIcon from "../../icons/CommentsActiveIcon";
+import LocationIcon from "../../icons/LocationIcon";
+import LikeIcon from "../../icons/LikeIcon";
 import LogoutButton from "../components/logoutButton";
-import CloseIcon from "../icons/CloseIcon";
+import CloseIcon from "../../icons/CloseIcon";
 import AvatarProfile from "../components/avatarProfile";
 
 const { width: SCREEN_WIDTH } = Dimensions.get("screen");
@@ -15,7 +15,7 @@ const ProfileScreen = () => {
   const posts = [
     {
       id: "1",
-      image: require("../assets/images/postImage_1.png"),
+      image: require("../../assets/images/postImage_1.png"),
       title: "Ліс",
       commentsAmount: 8,
       likes: 153,
@@ -23,7 +23,7 @@ const ProfileScreen = () => {
     },
     {
       id: "2",
-      image: require("../assets/images/postImage_2.png"),
+      image: require("../../assets/images/postImage_2.png"),
       title: "Захід на Чорному морі",
       commentsAmount: 3,
       likes: 200,
@@ -31,7 +31,7 @@ const ProfileScreen = () => {
     },
     {
       id: "3",
-      image: require("../assets/images/PostImage_3.png"),
+      image: require("../../assets/images/PostImage_3.png"),
       title: "Старий будиночок у Венеції",
       commentsAmount: 50,
       likes: 200,
@@ -65,14 +65,14 @@ const ProfileScreen = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require("../assets/images/bg.png")}
+        source={require("../../assets/images/bg.png")}
         resizeMode="cover"
         style={styles.image}
       />
       <View style={styles.formContainer}>
         <AvatarProfile
           OnClick={() => {}}
-          image={require("../assets/images/avatar.png")}
+          image={require("../../assets/images/avatar.png")}
           icon={<CloseIcon />}
         />
         <View style={styles.logoutButton}>

@@ -1,5 +1,5 @@
 import { TouchableOpacity } from "react-native-gesture-handler"
-import LogoutIcon from "../icons/LogoutIcon"
+import LogoutIcon from "../../icons/LogoutIcon"
 
 type Props = {
     onPress: () => void;

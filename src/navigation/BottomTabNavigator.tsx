@@ -3,7 +3,7 @@ import LoginScreen from "../screens/LoginScreen";
 import RegistrationScreen from "../screens/RegistrationScreen";
 import PostsScreen from "../screens/PostsScreen";
 import { Image } from "react-native-svg";
-import AddIcon from "../icons/AddIcon";
+import AddIcon from "../../icons/AddIcon";
 import LogoutButton from "../components/logoutButton";
 import PostsButton from "../components/PostsButton";
 import CreatePostsScreen from "../screens/CreatePostsScreen";
@@ -11,10 +11,14 @@ import AddBtn from "../components/addBtn";
 import BackButton from "../components/BackButton";
 import ProfileScreen from "../screens/ProfileScreen";
 import ProfileButton from "../components/ProfileButton";
+import { logoutDB } from "../utils/auth";
+import { useDispatch } from "react-redux";
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
+  const dispatch = useDispatch();
+
   return (
     <Tab.Navigator
       initialRouteName="Posts"
@@ -39,7 +43,7 @@ const BottomTabNavigator = () => {
           tabBarShowLabel: false,
           headerRight: () =>
             LogoutButton({
-              onPress: () => navigation.navigate("Login"),
+              onPress: () => logoutDB(dispatch),
             }),
         })}
       />

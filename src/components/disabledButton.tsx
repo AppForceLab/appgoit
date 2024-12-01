@@ -1,6 +1,6 @@
 
 import { StyleSheet, TouchableOpacity } from "react-native"
-import colors from "../styles/global";
+import colors from "../../styles/global";
 
 const DisabledButton = ({children, onPress, buttonStyle}) => {
     return (
@@ -19,7 +19,7 @@ export default DisabledButton;
 
 const style = StyleSheet.create({
     button: {
-        backgroundColor: colors.light_grey,
+        backgroundColor: colors.grey,
         borderRadius: 100,
         paddingVertical: 16,
         paddingHorizontal: 32,

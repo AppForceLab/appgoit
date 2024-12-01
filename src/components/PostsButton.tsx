@@ -1,6 +1,6 @@
 import { TouchableOpacity } from "react-native-gesture-handler"
-import PostsIcon from "../icons/PostsIcon"
-import  colors  from "../styles/global";
+import PostsIcon from "../../icons/PostsIcon"
+import  colors  from "../../styles/global";
 
 type Props = {
     onPress: () => void;

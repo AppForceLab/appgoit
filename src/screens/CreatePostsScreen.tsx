@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import colors from "../styles/global";
-import CameraIcon from "../icons/CameraIcon";
-import TrashIcon from "../icons/TrashIcon";
+import colors from "../../styles/global";
+import CameraIcon from "../../icons/CameraIcon";
+import TrashIcon from "../../icons/TrashIcon";
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "react-native";
 import { useRoute } from "@react-navigation/native";
@@ -10,7 +10,7 @@ import * as Location from "expo-location";
 
 import DisabledButton from "../components/disabledButton";
 import PostInput from "../components/PostInput";
-import LocationIcon from "../icons/LocationIcon";
+import LocationIcon from "../../icons/LocationIcon";
 import { useNavigation } from "@react-navigation/native";
 import { CameraType, CameraView, useCameraPermissions } from "expo-camera";
 

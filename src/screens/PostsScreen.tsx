@@ -1,21 +1,21 @@
 import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
-import colors from "../styles/global";
+import colors from "../../styles/global";
 import { FlatList } from "react-native-gesture-handler";
-import CommentsActiveIcon from "../icons/CommentsActiveIcon";
-import LocationIcon from "../icons/LocationIcon";
+import CommentsActiveIcon from "../../icons/CommentsActiveIcon";
+import LocationIcon from "../../icons/LocationIcon";
 
 const PostsScreen = ({navigation} ) => {
   const posts = [
     {
       id: "1",
-      image: require("../assets/images/postImage_1.png"),
+      image: require("../../assets/images/postImage_1.png"),
       title: "Ліс",
       commentsAmount: 0,
       location: "Ivano-Frankivs'k Region, Ukraine",
     },
     {
       id: "2",
-      image: require("../assets/images/postImage_2.png"),
+      image: require("../../assets/images/postImage_2.png"),
       title: "Захід на Чорному морі",
       commentsAmount: 3,
       location: "Black Sea, Ukraine",
@@ -49,7 +49,7 @@ const PostsScreen = ({navigation} ) => {
       <View style={styles.topContainer}>
         <Image
           style={styles.photo}
-          source={require("../assets/images/avatar.png")}
+          source={require("../../assets/images/avatar.png")}
         />
         <View>
           <Text style={styles.nameText}>Natali Romanova</Text>

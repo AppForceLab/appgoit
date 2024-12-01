@@ -1,7 +1,7 @@
 import { TouchableOpacity } from "react-native-gesture-handler"
-import ProfileIcon from "../icons/ProfileIcon";
+import ProfileIcon from "../../icons/ProfileIcon";
 
-import colors from "../styles/global";
+import colors from "../../styles/global";
 
 const ProfileButton = ({ onPress, focused }) => {
     return (
