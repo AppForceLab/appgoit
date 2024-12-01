@@ -11,7 +11,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //pro.smartapps.goitapp
 const firebaseConfig = {
-  apiKey: 'AIzaSyD7GAucgM-gdgrQjwdVQV8iwARQIQysPkw',
+  apiKey: '',
   authDomain: 'mygoitapp.firebaseapp.com',
   projectId: 'mygoitapp',
   storageBucket: 'gs://mygoitapp.firebasestorage.app',
